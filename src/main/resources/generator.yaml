@@ -1,0 +1,14 @@
+db:
+  url: jdbc:mysql://localhost:3306/superdb?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
+  username: root
+  password: 1234567
+  driverClassName: com.mysql.jdbc.Driver
+author: unknown
+packageName:
+path:
+  controller: controller
+  service: service.impl
+  interf: service
+  dao: dao
+  entity: entity
+  mapper: mappers

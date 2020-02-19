@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.StudentDao">
+
+    <resultMap id="studentResultMap" type="entity.Student">
+        <id column="sId" property="sId"/> 
+        <result column="sName" property="sName"/> 
+        <result column="sBirth" property="sBirth"/> 
+        <result column="sSex" property="sSex"/> 
+
+        
+        
+    </resultMap>
+
+    <sql id="studentColumns">
+        Student.s_id AS "sId",
+        Student.s_name AS "sName",
+        Student.s_birth AS "sBirth",
+        Student.s_sex AS "sSex"
+    </sql>
+
+    <sql id="studentJoins">
+        
+    </sql>
+
+    <select id="get" resultMap="studentResultMap">
+        SELECT
+        <include refid="studentColumns" />
+        FROM Student <include refid="studentJoins" />
+        <where>
+        Student.s_id = #{id}
+        </where>
+    </select>
+
+    <select id="findList" resultMap="studentResultMap">
+        SELECT
+        <include refid="studentColumns" />
+        FROM Student <include refid="studentJoins" />
+        <where>
+        </where>
+    </select>
+
+    <select id="findAllList" resultMap="studentResultMap">
+        SELECT
+        <include refid="studentColumns" />
+        FROM Student <include refid="studentJoins" />
+        <where>
+        </where>
+    </select>
+
+    <insert id="insert">
+        INSERT INTO Student(
+            s_id,
+            s_name,
+            s_birth,
+            s_sex
+        )
+        VALUES (
+            #{sId},
+            #{sName},
+            #{sBirth},
+            #{sSex}
+        )
+    </insert>
+
+    <insert id="insertBatch">
+        INSERT INTO Student(
+            s_id,
+            s_name,
+            s_birth,
+            s_sex
+        )
+        VALUES
+        <foreach collection ="list" item="student" separator =",">
+        (
+            #{student.sId},
+            #{student.sName},
+            #{student.sBirth},
+            #{student.sSex}
+        )
+        </foreach>
+    </insert>
+
+    <update id="update">
+        UPDATE Student SET
+        s_id = #{sId},
+        s_name = #{sName},
+        s_birth = #{sBirth},
+        s_sex = #{sSex}
+        WHERE s_id = #{sId}
+    </update>
+
+    <update id="delete">
+        DELETE FROM Student
+        WHERE s_id = #{sId}
+    </update>
+
+</mapper>
