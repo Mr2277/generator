@@ -22,6 +22,7 @@ public class SingleInvoker extends AbstractInvoker {
 
     @Override
     protected void initTasks() {
+
         taskQueue.initSingleTasks(className, tableName, tableInfos);
     }
 

@@ -1,0 +1,27 @@
+package com.greedystar.service;
+
+import com.greedystar.entity.Student;
+
+import java.util.List;
+
+/**
+ * Author unknown
+ * Date  2020-02-20
+ */
+public interface StudentService {
+
+    public Student get(String id);
+
+    public List<Student> findList(Student student);
+
+    public List<Student> findAllList();
+
+    public int insert(Student student);
+
+    public int insertBatch(List<Student> students);
+
+    public int update(Student student);
+
+    public int delete(Student student);
+
+}
